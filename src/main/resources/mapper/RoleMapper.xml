@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cec.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.cec.entity.Role" >
+    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="status_cd" property="statusCd" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="UPDATED_DATE" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="DISABLED_BY" property="disabledBy" jdbcType="VARCHAR" />
+    <result column="DISABLED_DATE" property="disabledDate" jdbcType="TIMESTAMP" />
+    <result column="DEFAULTMENU" property="defaultmenu" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="rolelevel" property="rolelevel" jdbcType="VARCHAR" />
+    <result column="DUNS" property="duns" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_id, name, description, status_cd, CREATED_BY, CREATED_DATE, UPDATED_BY, UPDATED_DATE, 
+    DISABLED_BY, DISABLED_DATE, DEFAULTMENU, STATUS, rolelevel, DUNS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from fy_fw_roles
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from fy_fw_roles
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cec.entity.Role" >
+    insert into fy_fw_roles (role_id, name, description, 
+      status_cd, CREATED_BY, CREATED_DATE, 
+      UPDATED_BY, UPDATED_DATE, DISABLED_BY, 
+      DISABLED_DATE, DEFAULTMENU, STATUS, 
+      rolelevel, DUNS)
+    values (#{roleId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{statusCd,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedDate,jdbcType=TIMESTAMP}, #{disabledBy,jdbcType=VARCHAR}, 
+      #{disabledDate,jdbcType=TIMESTAMP}, #{defaultmenu,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{rolelevel,jdbcType=VARCHAR}, #{duns,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cec.entity.Role" >
+    insert into fy_fw_roles
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="statusCd != null" >
+        status_cd,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY,
+      </if>
+      <if test="updatedDate != null" >
+        UPDATED_DATE,
+      </if>
+      <if test="disabledBy != null" >
+        DISABLED_BY,
+      </if>
+      <if test="disabledDate != null" >
+        DISABLED_DATE,
+      </if>
+      <if test="defaultmenu != null" >
+        DEFAULTMENU,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="rolelevel != null" >
+        rolelevel,
+      </if>
+      <if test="duns != null" >
+        DUNS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCd != null" >
+        #{statusCd,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledBy != null" >
+        #{disabledBy,jdbcType=VARCHAR},
+      </if>
+      <if test="disabledDate != null" >
+        #{disabledDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="defaultmenu != null" >
+        #{defaultmenu,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="rolelevel != null" >
+        #{rolelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="duns != null" >
+        #{duns,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cec.entity.Role" >
+    update fy_fw_roles
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCd != null" >
+        status_cd = #{statusCd,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledBy != null" >
+        DISABLED_BY = #{disabledBy,jdbcType=VARCHAR},
+      </if>
+      <if test="disabledDate != null" >
+        DISABLED_DATE = #{disabledDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="defaultmenu != null" >
+        DEFAULTMENU = #{defaultmenu,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="rolelevel != null" >
+        rolelevel = #{rolelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="duns != null" >
+        DUNS = #{duns,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cec.entity.Role" >
+    update fy_fw_roles
+    set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      status_cd = #{statusCd,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      DISABLED_BY = #{disabledBy,jdbcType=VARCHAR},
+      DISABLED_DATE = #{disabledDate,jdbcType=TIMESTAMP},
+      DEFAULTMENU = #{defaultmenu,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      rolelevel = #{rolelevel,jdbcType=VARCHAR},
+      DUNS = #{duns,jdbcType=VARCHAR}
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+</mapper>
