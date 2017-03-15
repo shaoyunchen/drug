@@ -27,7 +27,17 @@
     from fy_fw_roles
     where role_id = #{roleId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByRoleId" resultMap="BaseResultMap" >
+      select
+      <include refid="Base_Column_List" />
+      from fy_fw_roles
+      where role_id in
+      <foreach collection="ids" item="id"  open="(" separator="," close=")">
+        #{id}
+      </foreach>
+      role_id = #{roleId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from fy_fw_roles
     where role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
