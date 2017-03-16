@@ -88,4 +88,7 @@
       EMP_NO,ROLE_ID,STATUS_CD,CREATED_BY ,CREATED_DATE,UPDATED_BY,UPDATED_DATE,DISABLED_BY,DISABLED_DATE
       from fy_fw_user_roles where role_id = #{roleId}
     </select>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select * from fy_fw_user_roles where EMP_NO = #{userId}
+  </select>
 </mapper>
