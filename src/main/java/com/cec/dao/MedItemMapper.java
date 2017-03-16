@@ -3,9 +3,12 @@ package com.cec.dao;
 import com.cec.entity.MedItem;
 import com.cec.entity.MedItemExample;
 import com.cec.entity.MedItemWithBLOBs;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface MedItemMapper {
     int countByExample(MedItemExample example);
 
