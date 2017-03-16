@@ -12,4 +12,6 @@ public interface UserRoleMapMapper {
     List<UserRoleMap> selectByRoleId(String roleId);
 
     int insertSelective(UserRoleMap record);
+
+
 }
