@@ -39,46 +39,29 @@
     <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
     <result column="EMAIL" property="email" jdbcType="VARCHAR" />
     <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="Comments" property="comments" jdbcType="VARCHAR" />
     <result column="SFZ" property="sfz" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.cec.entity.User" extends="BaseResultMap" >
-    <result column="Comments" property="comments" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     EMP_NO, LAST_NAME, FIRST_NAME, NICKNAME, WORK_NO, BEEPER_NO, VOICE_NO, USER_ID, TITLE, 
     SUPERVISOR, BUILDING, DEPT_NO, DEPT_NAME, BUILDING_ADDR1, BUILDING_ADDR2, BUILDING_CITY, 
     CELLULAR_NO, HIRE_DATE, SUP_EMP_NO, EMP_TYPE, CUBE_NO, FLOOR, STATUS, CREATED_BY, 
     CREATED_DATE, UPDATED_BY, UPDATED_DATE, DISABLED_BY, DISABLED_DATE, SHIFT, Alt_Contact, 
-    Workstream_ID, VAXNAME, HOME_PHONE, PHOTO, EMAIL, PASSWORD, SFZ
+    Workstream_ID, VAXNAME, HOME_PHONE, PHOTO, EMAIL, PASSWORD, Comments, SFZ
   </sql>
-  <sql id="Blob_Column_List" >
-    Comments
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from fy_employees
     where EMP_NO = #{empNo,jdbcType=VARCHAR}
   </select>
-    <select id="selectByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
-      select
-      <include refid="Base_Column_List" />
-      ,
-      <include refid="Blob_Column_List" />
-      from fy_employees
-      where USER_ID = #{userId,jdbcType=VARCHAR}
-    </select>
-    <select id="selectByUserIdAndPassword"  resultMap="ResultMapWithBLOBs"  >
-        select
-        <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
-        from fy_employees
-        where USER_ID = #{arg0} AND PASSWORD = #{arg1}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fy_employees
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from fy_employees
     where EMP_NO = #{empNo,jdbcType=VARCHAR}
   </delete>
@@ -95,7 +78,7 @@
       DISABLED_BY, DISABLED_DATE, SHIFT, 
       Alt_Contact, Workstream_ID, VAXNAME, 
       HOME_PHONE, PHOTO, EMAIL, 
-      PASSWORD, SFZ, Comments
+      PASSWORD, Comments, SFZ
       )
     values (#{empNo,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
       #{nickname,jdbcType=VARCHAR}, #{workNo,jdbcType=VARCHAR}, #{beeperNo,jdbcType=VARCHAR}, 
@@ -109,7 +92,7 @@
       #{disabledBy,jdbcType=VARCHAR}, #{disabledDate,jdbcType=TIMESTAMP}, #{shift,jdbcType=VARCHAR}, 
       #{altContact,jdbcType=VARCHAR}, #{workstreamId,jdbcType=VARCHAR}, #{vaxname,jdbcType=VARCHAR}, 
       #{homePhone,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}, #{comments,jdbcType=LONGVARCHAR}
+      #{password,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.cec.entity.User" >
@@ -226,11 +209,11 @@
       <if test="password != null" >
         PASSWORD,
       </if>
-      <if test="sfz != null" >
-        SFZ,
-      </if>
       <if test="comments != null" >
         Comments,
+      </if>
+      <if test="sfz != null" >
+        SFZ,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -345,11 +328,11 @@
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
       <if test="sfz != null" >
         #{sfz,jdbcType=VARCHAR},
-      </if>
-      <if test="comments != null" >
-        #{comments,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -464,55 +447,13 @@
       <if test="password != null" >
         PASSWORD = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="comments != null" >
+        Comments = #{comments,jdbcType=VARCHAR},
+      </if>
       <if test="sfz != null" >
         SFZ = #{sfz,jdbcType=VARCHAR},
       </if>
-      <if test="comments != null" >
-        Comments = #{comments,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where EMP_NO = #{empNo,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cec.entity.User" >
-    update fy_employees
-    set LAST_NAME = #{lastName,jdbcType=VARCHAR},
-      FIRST_NAME = #{firstName,jdbcType=VARCHAR},
-      NICKNAME = #{nickname,jdbcType=VARCHAR},
-      WORK_NO = #{workNo,jdbcType=VARCHAR},
-      BEEPER_NO = #{beeperNo,jdbcType=VARCHAR},
-      VOICE_NO = #{voiceNo,jdbcType=VARCHAR},
-      USER_ID = #{userId,jdbcType=VARCHAR},
-      TITLE = #{title,jdbcType=VARCHAR},
-      SUPERVISOR = #{supervisor,jdbcType=VARCHAR},
-      BUILDING = #{building,jdbcType=VARCHAR},
-      DEPT_NO = #{deptNo,jdbcType=VARCHAR},
-      DEPT_NAME = #{deptName,jdbcType=VARCHAR},
-      BUILDING_ADDR1 = #{buildingAddr1,jdbcType=BIGINT},
-      BUILDING_ADDR2 = #{buildingAddr2,jdbcType=VARCHAR},
-      BUILDING_CITY = #{buildingCity,jdbcType=VARCHAR},
-      CELLULAR_NO = #{cellularNo,jdbcType=VARCHAR},
-      HIRE_DATE = #{hireDate,jdbcType=TIMESTAMP},
-      SUP_EMP_NO = #{supEmpNo,jdbcType=VARCHAR},
-      EMP_TYPE = #{empType,jdbcType=VARCHAR},
-      CUBE_NO = #{cubeNo,jdbcType=VARCHAR},
-      FLOOR = #{floor,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=BIGINT},
-      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
-      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
-      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
-      UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
-      DISABLED_BY = #{disabledBy,jdbcType=VARCHAR},
-      DISABLED_DATE = #{disabledDate,jdbcType=TIMESTAMP},
-      SHIFT = #{shift,jdbcType=VARCHAR},
-      Alt_Contact = #{altContact,jdbcType=VARCHAR},
-      Workstream_ID = #{workstreamId,jdbcType=VARCHAR},
-      VAXNAME = #{vaxname,jdbcType=VARCHAR},
-      HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
-      PHOTO = #{photo,jdbcType=VARCHAR},
-      EMAIL = #{email,jdbcType=VARCHAR},
-      PASSWORD = #{password,jdbcType=VARCHAR},
-      SFZ = #{sfz,jdbcType=VARCHAR},
-      Comments = #{comments,jdbcType=LONGVARCHAR}
     where EMP_NO = #{empNo,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cec.entity.User" >
@@ -553,6 +494,7 @@
       PHOTO = #{photo,jdbcType=VARCHAR},
       EMAIL = #{email,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
+      Comments = #{comments,jdbcType=VARCHAR},
       SFZ = #{sfz,jdbcType=VARCHAR}
     where EMP_NO = #{empNo,jdbcType=VARCHAR}
   </update>

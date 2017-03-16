@@ -83,9 +83,9 @@
       </if>
     </trim>
   </insert>
-    <select id="selectByRoleId" resultType="BaseResultMap">
+    <select id="selectByRoleId" resultMap="BaseResultMap">
       select
-      *
+      EMP_NO,ROLE_ID,STATUS_CD,CREATED_BY ,CREATED_DATE,UPDATED_BY,UPDATED_DATE,DISABLED_BY,DISABLED_DATE
       from fy_fw_user_roles where role_id = #{roleId}
     </select>
 </mapper>

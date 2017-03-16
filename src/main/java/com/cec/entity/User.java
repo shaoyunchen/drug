@@ -69,6 +69,91 @@ public class User {
 
     private String vaxname;
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"empNo\":\"")
+                .append(empNo).append('\"');
+        sb.append(",\"lastName\":\"")
+                .append(lastName).append('\"');
+        sb.append(",\"firstName\":\"")
+                .append(firstName).append('\"');
+        sb.append(",\"nickname\":\"")
+                .append(nickname).append('\"');
+        sb.append(",\"workNo\":\"")
+                .append(workNo).append('\"');
+        sb.append(",\"beeperNo\":\"")
+                .append(beeperNo).append('\"');
+        sb.append(",\"voiceNo\":\"")
+                .append(voiceNo).append('\"');
+        sb.append(",\"userId\":\"")
+                .append(userId).append('\"');
+        sb.append(",\"title\":\"")
+                .append(title).append('\"');
+        sb.append(",\"supervisor\":\"")
+                .append(supervisor).append('\"');
+        sb.append(",\"building\":\"")
+                .append(building).append('\"');
+        sb.append(",\"deptNo\":\"")
+                .append(deptNo).append('\"');
+        sb.append(",\"deptName\":\"")
+                .append(deptName).append('\"');
+        sb.append(",\"buildingAddr1\":")
+                .append(buildingAddr1);
+        sb.append(",\"buildingAddr2\":\"")
+                .append(buildingAddr2).append('\"');
+        sb.append(",\"buildingCity\":\"")
+                .append(buildingCity).append('\"');
+        sb.append(",\"cellularNo\":\"")
+                .append(cellularNo).append('\"');
+        sb.append(",\"hireDate\":\"")
+                .append(hireDate).append('\"');
+        sb.append(",\"supEmpNo\":\"")
+                .append(supEmpNo).append('\"');
+        sb.append(",\"empType\":\"")
+                .append(empType).append('\"');
+        sb.append(",\"cubeNo\":\"")
+                .append(cubeNo).append('\"');
+        sb.append(",\"floor\":\"")
+                .append(floor).append('\"');
+        sb.append(",\"status\":")
+                .append(status);
+        sb.append(",\"createdBy\":\"")
+                .append(createdBy).append('\"');
+        sb.append(",\"createdDate\":\"")
+                .append(createdDate).append('\"');
+        sb.append(",\"updatedBy\":\"")
+                .append(updatedBy).append('\"');
+        sb.append(",\"updatedDate\":\"")
+                .append(updatedDate).append('\"');
+        sb.append(",\"disabledBy\":\"")
+                .append(disabledBy).append('\"');
+        sb.append(",\"disabledDate\":\"")
+                .append(disabledDate).append('\"');
+        sb.append(",\"shift\":\"")
+                .append(shift).append('\"');
+        sb.append(",\"altContact\":\"")
+                .append(altContact).append('\"');
+        sb.append(",\"workstreamId\":\"")
+                .append(workstreamId).append('\"');
+        sb.append(",\"vaxname\":\"")
+                .append(vaxname).append('\"');
+        sb.append(",\"homePhone\":\"")
+                .append(homePhone).append('\"');
+        sb.append(",\"photo\":\"")
+                .append(photo).append('\"');
+        sb.append(",\"email\":\"")
+                .append(email).append('\"');
+        sb.append(",\"password\":\"")
+                .append(password).append('\"');
+        sb.append(",\"comments\":\"")
+                .append(comments).append('\"');
+        sb.append(",\"sfz\":\"")
+                .append(sfz).append('\"');
+        sb.append('}');
+        return sb.toString();
+    }
+
     private String homePhone;
 
     private String photo;
@@ -77,9 +162,9 @@ public class User {
 
     private String password;
 
-    private String sfz;
-
     private String comments;
+
+    private String sfz;
 
     public String getEmpNo() {
         return empNo;
@@ -377,14 +462,6 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getSfz() {
-        return sfz;
-    }
-
-    public void setSfz(String sfz) {
-        this.sfz = sfz == null ? null : sfz.trim();
-    }
-
     public String getComments() {
         return comments;
     }
@@ -393,88 +470,11 @@ public class User {
         this.comments = comments == null ? null : comments.trim();
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("{");
-        sb.append("\"empNo\":\"")
-                .append(empNo).append('\"');
-        sb.append(",\"lastName\":\"")
-                .append(lastName).append('\"');
-        sb.append(",\"firstName\":\"")
-                .append(firstName).append('\"');
-        sb.append(",\"nickname\":\"")
-                .append(nickname).append('\"');
-        sb.append(",\"workNo\":\"")
-                .append(workNo).append('\"');
-        sb.append(",\"beeperNo\":\"")
-                .append(beeperNo).append('\"');
-        sb.append(",\"voiceNo\":\"")
-                .append(voiceNo).append('\"');
-        sb.append(",\"userId\":\"")
-                .append(userId).append('\"');
-        sb.append(",\"title\":\"")
-                .append(title).append('\"');
-        sb.append(",\"supervisor\":\"")
-                .append(supervisor).append('\"');
-        sb.append(",\"building\":\"")
-                .append(building).append('\"');
-        sb.append(",\"deptNo\":\"")
-                .append(deptNo).append('\"');
-        sb.append(",\"deptName\":\"")
-                .append(deptName).append('\"');
-        sb.append(",\"buildingAddr1\":")
-                .append(buildingAddr1);
-        sb.append(",\"buildingAddr2\":\"")
-                .append(buildingAddr2).append('\"');
-        sb.append(",\"buildingCity\":\"")
-                .append(buildingCity).append('\"');
-        sb.append(",\"cellularNo\":\"")
-                .append(cellularNo).append('\"');
-        sb.append(",\"hireDate\":\"")
-                .append(hireDate).append('\"');
-        sb.append(",\"supEmpNo\":\"")
-                .append(supEmpNo).append('\"');
-        sb.append(",\"empType\":\"")
-                .append(empType).append('\"');
-        sb.append(",\"cubeNo\":\"")
-                .append(cubeNo).append('\"');
-        sb.append(",\"floor\":\"")
-                .append(floor).append('\"');
-        sb.append(",\"status\":")
-                .append(status);
-        sb.append(",\"createdBy\":\"")
-                .append(createdBy).append('\"');
-        sb.append(",\"createdDate\":\"")
-                .append(createdDate).append('\"');
-        sb.append(",\"updatedBy\":\"")
-                .append(updatedBy).append('\"');
-        sb.append(",\"updatedDate\":\"")
-                .append(updatedDate).append('\"');
-        sb.append(",\"disabledBy\":\"")
-                .append(disabledBy).append('\"');
-        sb.append(",\"disabledDate\":\"")
-                .append(disabledDate).append('\"');
-        sb.append(",\"shift\":\"")
-                .append(shift).append('\"');
-        sb.append(",\"altContact\":\"")
-                .append(altContact).append('\"');
-        sb.append(",\"workstreamId\":\"")
-                .append(workstreamId).append('\"');
-        sb.append(",\"vaxname\":\"")
-                .append(vaxname).append('\"');
-        sb.append(",\"homePhone\":\"")
-                .append(homePhone).append('\"');
-        sb.append(",\"photo\":\"")
-                .append(photo).append('\"');
-        sb.append(",\"email\":\"")
-                .append(email).append('\"');
-        sb.append(",\"password\":\"")
-                .append(password).append('\"');
-        sb.append(",\"sfz\":\"")
-                .append(sfz).append('\"');
-        sb.append(",\"comments\":\"")
-                .append(comments).append('\"');
-        sb.append('}');
-        return sb.toString();
+    public String getSfz() {
+        return sfz;
+    }
+
+    public void setSfz(String sfz) {
+        this.sfz = sfz == null ? null : sfz.trim();
     }
 }

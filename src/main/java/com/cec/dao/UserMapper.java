@@ -15,11 +15,7 @@ public interface UserMapper {
 
     User selectByUserId(String userId);
 
-    User selectByUserIdAndPassword(String userId, String password);
-
     int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKeyWithBLOBs(User record);
 
     int updateByPrimaryKey(User record);
 }

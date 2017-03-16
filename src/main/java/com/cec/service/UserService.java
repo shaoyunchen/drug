@@ -17,8 +17,5 @@ public class UserService {
         return userMapper.selectByUserId(userId);
     }
 
-    public User getUserWithUserIdAndPassword(String userId,String password){
-        return userMapper.selectByUserIdAndPassword(userId,password);
-    }
 
 }

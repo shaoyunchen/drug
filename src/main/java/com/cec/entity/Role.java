@@ -1,8 +1,10 @@
 package com.cec.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Date;
 
-public class Role {
+public class Role implements GrantedAuthority {
     private String roleId;
 
     private String name;
@@ -176,5 +178,10 @@ public class Role {
                 .append(duns).append('\"');
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public String getAuthority() {
+        return "ROLE_"+this.getRoleId();
     }
 }

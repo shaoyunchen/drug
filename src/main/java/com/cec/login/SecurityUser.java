@@ -1,4 +1,4 @@
-package com.cec.drug;
+package com.cec.login;
 
 import com.cec.entity.Role;
 import com.cec.entity.User;
@@ -20,6 +20,10 @@ public class SecurityUser implements UserDetails {
     List<Role> roles;
 
     User user;
+
+    public User getUser(){
+        return this.user;
+    }
 
     public SecurityUser(User user) {
         /*if(user==null)
@@ -45,12 +49,13 @@ public class SecurityUser implements UserDetails {
         return getMyAuthorityies();
     }
 
-    private List<SimpleGrantedAuthority> getMyAuthorityies(){
-        List<SimpleGrantedAuthority> simpleGrantedAuthorities=new ArrayList<>();
+    private List<GrantedAuthority> getMyAuthorityies(){
+        List<GrantedAuthority> grantedAuthorities=new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         for (Role role:roles) {
-            simpleGrantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+role.getRoleId()));
+            grantedAuthorities.add(role);
         }
-        return simpleGrantedAuthorities;
+        return grantedAuthorities;
     }
 
     @Override

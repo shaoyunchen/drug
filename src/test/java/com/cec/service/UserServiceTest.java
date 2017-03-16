@@ -26,12 +26,6 @@ public class UserServiceTest {
         System.out.println(user);
     }
 
-    @Test
-    public void getUserWithUserIdAndPassword() throws Exception {
-        User user = userService.getUserWithUserIdAndPassword("daiqian","394e9e9aaa53e91b76dbc7aa4d4aea56");
-        Assert.assertNotNull(user);
-        Assert.assertEquals("daiqian",user.getEmpNo());
-        System.out.println(user);
-    }
+
 
 }
