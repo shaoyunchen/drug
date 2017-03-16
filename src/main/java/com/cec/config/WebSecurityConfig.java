@@ -2,7 +2,7 @@ package com.cec.config;
 
 import com.cec.login.DrugAuthenticationProvider;
 import com.cec.login.LoginSuccessHandler;
-import com.cec.service.DrugUserDetailsService;
+import com.cec.login.DrugUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

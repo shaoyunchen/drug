@@ -1,7 +1,8 @@
-package com.cec.service;
+package com.cec.login;
 
-import com.cec.login.SecurityUser;
 import com.cec.entity.User;
+import com.cec.service.RoleService;
+import com.cec.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
