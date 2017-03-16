@@ -8,4 +8,6 @@ public interface UserRoleMapMapper {
     int insert(UserRoleMap record);
 
     int insertSelective(UserRoleMap record);
+
+
 }

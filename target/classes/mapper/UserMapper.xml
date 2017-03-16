@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cec.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.cec.entity.User" >
+    <id column="EMP_NO" property="empNo" jdbcType="VARCHAR" />
+    <result column="LAST_NAME" property="lastName" jdbcType="VARCHAR" />
+    <result column="FIRST_NAME" property="firstName" jdbcType="VARCHAR" />
+    <result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+    <result column="WORK_NO" property="workNo" jdbcType="VARCHAR" />
+    <result column="BEEPER_NO" property="beeperNo" jdbcType="VARCHAR" />
+    <result column="VOICE_NO" property="voiceNo" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="SUPERVISOR" property="supervisor" jdbcType="VARCHAR" />
+    <result column="BUILDING" property="building" jdbcType="VARCHAR" />
+    <result column="DEPT_NO" property="deptNo" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="BUILDING_ADDR1" property="buildingAddr1" jdbcType="BIGINT" />
+    <result column="BUILDING_ADDR2" property="buildingAddr2" jdbcType="VARCHAR" />
+    <result column="BUILDING_CITY" property="buildingCity" jdbcType="VARCHAR" />
+    <result column="CELLULAR_NO" property="cellularNo" jdbcType="VARCHAR" />
+    <result column="HIRE_DATE" property="hireDate" jdbcType="TIMESTAMP" />
+    <result column="SUP_EMP_NO" property="supEmpNo" jdbcType="VARCHAR" />
+    <result column="EMP_TYPE" property="empType" jdbcType="VARCHAR" />
+    <result column="CUBE_NO" property="cubeNo" jdbcType="VARCHAR" />
+    <result column="FLOOR" property="floor" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="BIGINT" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="UPDATED_DATE" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="DISABLED_BY" property="disabledBy" jdbcType="VARCHAR" />
+    <result column="DISABLED_DATE" property="disabledDate" jdbcType="TIMESTAMP" />
+    <result column="SHIFT" property="shift" jdbcType="VARCHAR" />
+    <result column="Alt_Contact" property="altContact" jdbcType="VARCHAR" />
+    <result column="Workstream_ID" property="workstreamId" jdbcType="VARCHAR" />
+    <result column="VAXNAME" property="vaxname" jdbcType="VARCHAR" />
+    <result column="HOME_PHONE" property="homePhone" jdbcType="VARCHAR" />
+    <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="Comments" property="comments" jdbcType="VARCHAR" />
+    <result column="SFZ" property="sfz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EMP_NO, LAST_NAME, FIRST_NAME, NICKNAME, WORK_NO, BEEPER_NO, VOICE_NO, USER_ID, TITLE, 
+    SUPERVISOR, BUILDING, DEPT_NO, DEPT_NAME, BUILDING_ADDR1, BUILDING_ADDR2, BUILDING_CITY, 
+    CELLULAR_NO, HIRE_DATE, SUP_EMP_NO, EMP_TYPE, CUBE_NO, FLOOR, STATUS, CREATED_BY, 
+    CREATED_DATE, UPDATED_BY, UPDATED_DATE, DISABLED_BY, DISABLED_DATE, SHIFT, Alt_Contact, 
+    Workstream_ID, VAXNAME, HOME_PHONE, PHOTO, EMAIL, PASSWORD, Comments, SFZ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from fy_employees
+    where EMP_NO = #{empNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fy_employees
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from fy_employees
+    where EMP_NO = #{empNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cec.entity.User" >
+    insert into fy_employees (EMP_NO, LAST_NAME, FIRST_NAME, 
+      NICKNAME, WORK_NO, BEEPER_NO, 
+      VOICE_NO, USER_ID, TITLE, 
+      SUPERVISOR, BUILDING, DEPT_NO, 
+      DEPT_NAME, BUILDING_ADDR1, BUILDING_ADDR2, 
+      BUILDING_CITY, CELLULAR_NO, HIRE_DATE, 
+      SUP_EMP_NO, EMP_TYPE, CUBE_NO, 
+      FLOOR, STATUS, CREATED_BY, 
+      CREATED_DATE, UPDATED_BY, UPDATED_DATE, 
+      DISABLED_BY, DISABLED_DATE, SHIFT, 
+      Alt_Contact, Workstream_ID, VAXNAME, 
+      HOME_PHONE, PHOTO, EMAIL, 
+      PASSWORD, Comments, SFZ
+      )
+    values (#{empNo,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{workNo,jdbcType=VARCHAR}, #{beeperNo,jdbcType=VARCHAR}, 
+      #{voiceNo,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{supervisor,jdbcType=VARCHAR}, #{building,jdbcType=VARCHAR}, #{deptNo,jdbcType=VARCHAR}, 
+      #{deptName,jdbcType=VARCHAR}, #{buildingAddr1,jdbcType=BIGINT}, #{buildingAddr2,jdbcType=VARCHAR}, 
+      #{buildingCity,jdbcType=VARCHAR}, #{cellularNo,jdbcType=VARCHAR}, #{hireDate,jdbcType=TIMESTAMP}, 
+      #{supEmpNo,jdbcType=VARCHAR}, #{empType,jdbcType=VARCHAR}, #{cubeNo,jdbcType=VARCHAR}, 
+      #{floor,jdbcType=VARCHAR}, #{status,jdbcType=BIGINT}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDate,jdbcType=TIMESTAMP}, 
+      #{disabledBy,jdbcType=VARCHAR}, #{disabledDate,jdbcType=TIMESTAMP}, #{shift,jdbcType=VARCHAR}, 
+      #{altContact,jdbcType=VARCHAR}, #{workstreamId,jdbcType=VARCHAR}, #{vaxname,jdbcType=VARCHAR}, 
+      #{homePhone,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cec.entity.User" >
+    insert into fy_employees
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empNo != null" >
+        EMP_NO,
+      </if>
+      <if test="lastName != null" >
+        LAST_NAME,
+      </if>
+      <if test="firstName != null" >
+        FIRST_NAME,
+      </if>
+      <if test="nickname != null" >
+        NICKNAME,
+      </if>
+      <if test="workNo != null" >
+        WORK_NO,
+      </if>
+      <if test="beeperNo != null" >
+        BEEPER_NO,
+      </if>
+      <if test="voiceNo != null" >
+        VOICE_NO,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="supervisor != null" >
+        SUPERVISOR,
+      </if>
+      <if test="building != null" >
+        BUILDING,
+      </if>
+      <if test="deptNo != null" >
+        DEPT_NO,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+      <if test="buildingAddr1 != null" >
+        BUILDING_ADDR1,
+      </if>
+      <if test="buildingAddr2 != null" >
+        BUILDING_ADDR2,
+      </if>
+      <if test="buildingCity != null" >
+        BUILDING_CITY,
+      </if>
+      <if test="cellularNo != null" >
+        CELLULAR_NO,
+      </if>
+      <if test="hireDate != null" >
+        HIRE_DATE,
+      </if>
+      <if test="supEmpNo != null" >
+        SUP_EMP_NO,
+      </if>
+      <if test="empType != null" >
+        EMP_TYPE,
+      </if>
+      <if test="cubeNo != null" >
+        CUBE_NO,
+      </if>
+      <if test="floor != null" >
+        FLOOR,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY,
+      </if>
+      <if test="updatedDate != null" >
+        UPDATED_DATE,
+      </if>
+      <if test="disabledBy != null" >
+        DISABLED_BY,
+      </if>
+      <if test="disabledDate != null" >
+        DISABLED_DATE,
+      </if>
+      <if test="shift != null" >
+        SHIFT,
+      </if>
+      <if test="altContact != null" >
+        Alt_Contact,
+      </if>
+      <if test="workstreamId != null" >
+        Workstream_ID,
+      </if>
+      <if test="vaxname != null" >
+        VAXNAME,
+      </if>
+      <if test="homePhone != null" >
+        HOME_PHONE,
+      </if>
+      <if test="photo != null" >
+        PHOTO,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="comments != null" >
+        Comments,
+      </if>
+      <if test="sfz != null" >
+        SFZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empNo != null" >
+        #{empNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="workNo != null" >
+        #{workNo,jdbcType=VARCHAR},
+      </if>
+      <if test="beeperNo != null" >
+        #{beeperNo,jdbcType=VARCHAR},
+      </if>
+      <if test="voiceNo != null" >
+        #{voiceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisor != null" >
+        #{supervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="building != null" >
+        #{building,jdbcType=VARCHAR},
+      </if>
+      <if test="deptNo != null" >
+        #{deptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingAddr1 != null" >
+        #{buildingAddr1,jdbcType=BIGINT},
+      </if>
+      <if test="buildingAddr2 != null" >
+        #{buildingAddr2,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCity != null" >
+        #{buildingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cellularNo != null" >
+        #{cellularNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hireDate != null" >
+        #{hireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supEmpNo != null" >
+        #{supEmpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="empType != null" >
+        #{empType,jdbcType=VARCHAR},
+      </if>
+      <if test="cubeNo != null" >
+        #{cubeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledBy != null" >
+        #{disabledBy,jdbcType=VARCHAR},
+      </if>
+      <if test="disabledDate != null" >
+        #{disabledDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shift != null" >
+        #{shift,jdbcType=VARCHAR},
+      </if>
+      <if test="altContact != null" >
+        #{altContact,jdbcType=VARCHAR},
+      </if>
+      <if test="workstreamId != null" >
+        #{workstreamId,jdbcType=VARCHAR},
+      </if>
+      <if test="vaxname != null" >
+        #{vaxname,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null" >
+        #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null" >
+        #{sfz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cec.entity.User" >
+    update fy_employees
+    <set >
+      <if test="lastName != null" >
+        LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null" >
+        FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        NICKNAME = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="workNo != null" >
+        WORK_NO = #{workNo,jdbcType=VARCHAR},
+      </if>
+      <if test="beeperNo != null" >
+        BEEPER_NO = #{beeperNo,jdbcType=VARCHAR},
+      </if>
+      <if test="voiceNo != null" >
+        VOICE_NO = #{voiceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisor != null" >
+        SUPERVISOR = #{supervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="building != null" >
+        BUILDING = #{building,jdbcType=VARCHAR},
+      </if>
+      <if test="deptNo != null" >
+        DEPT_NO = #{deptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingAddr1 != null" >
+        BUILDING_ADDR1 = #{buildingAddr1,jdbcType=BIGINT},
+      </if>
+      <if test="buildingAddr2 != null" >
+        BUILDING_ADDR2 = #{buildingAddr2,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCity != null" >
+        BUILDING_CITY = #{buildingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cellularNo != null" >
+        CELLULAR_NO = #{cellularNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hireDate != null" >
+        HIRE_DATE = #{hireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supEmpNo != null" >
+        SUP_EMP_NO = #{supEmpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="empType != null" >
+        EMP_TYPE = #{empType,jdbcType=VARCHAR},
+      </if>
+      <if test="cubeNo != null" >
+        CUBE_NO = #{cubeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null" >
+        FLOOR = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledBy != null" >
+        DISABLED_BY = #{disabledBy,jdbcType=VARCHAR},
+      </if>
+      <if test="disabledDate != null" >
+        DISABLED_DATE = #{disabledDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shift != null" >
+        SHIFT = #{shift,jdbcType=VARCHAR},
+      </if>
+      <if test="altContact != null" >
+        Alt_Contact = #{altContact,jdbcType=VARCHAR},
+      </if>
+      <if test="workstreamId != null" >
+        Workstream_ID = #{workstreamId,jdbcType=VARCHAR},
+      </if>
+      <if test="vaxname != null" >
+        VAXNAME = #{vaxname,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null" >
+        HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        PHOTO = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        Comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null" >
+        SFZ = #{sfz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EMP_NO = #{empNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cec.entity.User" >
+    update fy_employees
+    set LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      NICKNAME = #{nickname,jdbcType=VARCHAR},
+      WORK_NO = #{workNo,jdbcType=VARCHAR},
+      BEEPER_NO = #{beeperNo,jdbcType=VARCHAR},
+      VOICE_NO = #{voiceNo,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      SUPERVISOR = #{supervisor,jdbcType=VARCHAR},
+      BUILDING = #{building,jdbcType=VARCHAR},
+      DEPT_NO = #{deptNo,jdbcType=VARCHAR},
+      DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      BUILDING_ADDR1 = #{buildingAddr1,jdbcType=BIGINT},
+      BUILDING_ADDR2 = #{buildingAddr2,jdbcType=VARCHAR},
+      BUILDING_CITY = #{buildingCity,jdbcType=VARCHAR},
+      CELLULAR_NO = #{cellularNo,jdbcType=VARCHAR},
+      HIRE_DATE = #{hireDate,jdbcType=TIMESTAMP},
+      SUP_EMP_NO = #{supEmpNo,jdbcType=VARCHAR},
+      EMP_TYPE = #{empType,jdbcType=VARCHAR},
+      CUBE_NO = #{cubeNo,jdbcType=VARCHAR},
+      FLOOR = #{floor,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=BIGINT},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      DISABLED_BY = #{disabledBy,jdbcType=VARCHAR},
+      DISABLED_DATE = #{disabledDate,jdbcType=TIMESTAMP},
+      SHIFT = #{shift,jdbcType=VARCHAR},
+      Alt_Contact = #{altContact,jdbcType=VARCHAR},
+      Workstream_ID = #{workstreamId,jdbcType=VARCHAR},
+      VAXNAME = #{vaxname,jdbcType=VARCHAR},
+      HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+      PHOTO = #{photo,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      Comments = #{comments,jdbcType=VARCHAR},
+      SFZ = #{sfz,jdbcType=VARCHAR}
+    where EMP_NO = #{empNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
