@@ -21,7 +21,7 @@ public class RoleService {
     UserRoleMapMapper userRoleMapMapper;
 
     public List<Role> getRolesWithUserId(String userId){
-        List<UserRoleMap> userRoleMaps = userRoleMapMapper.selectByRoleId(userId);
+        List<UserRoleMap> userRoleMaps = userRoleMapMapper.selectByUserId(userId);
         List<Role> roles = new ArrayList<>();
         if(userRoleMaps!=null&&userRoleMaps.size()>0){
             for (UserRoleMap map: userRoleMaps) {
