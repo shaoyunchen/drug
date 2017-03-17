@@ -26,7 +26,9 @@ public class RoleService {
         if(userRoleMaps!=null&&userRoleMaps.size()>0){
             for (UserRoleMap map: userRoleMaps) {
                 Role role = roleMapper.selectByPrimaryKey(map.getRoleId());
-                roles.add(role);
+                if (role != null) {
+                    roles.add(role);
+                }
             }
         }
         return roles;

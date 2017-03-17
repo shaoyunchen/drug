@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/**/favicon.ico","/error/**");
     }
 
     @Override
@@ -48,16 +48,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
         http
                 .formLogin()
-                //.loginProcessingUrl("/login")
                 .loginPage("/login")
                 .failureUrl("/login?error")
-                .successForwardUrl("/hello")
-                .successHandler(loginSuccessHandler)
+                .defaultSuccessUrl("/hello")
+                //.successHandler(loginSuccessHandler)
                 .permitAll();
         http
                 .logout()
-                .logoutSuccessUrl("/login")
-                .permitAll();
+                .logoutUrl("/logout")
+                .permitAll()
+                .invalidateHttpSession(true);
+        http
+                .sessionManagement().maximumSessions(1).expiredUrl("/login?expired")
+                .and()
+                .and().exceptionHandling().accessDeniedPage("/static/403");
         super.configure(http);
     }
 

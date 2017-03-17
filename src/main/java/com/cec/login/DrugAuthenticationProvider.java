@@ -31,10 +31,12 @@ public class DrugAuthenticationProvider implements AuthenticationProvider {
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
         UserDetails user =  userService.loadUserByUsername(username);
-        String encodePassword = md5Encoder.encodePassword(password, null);
+        /*String encodePassword = md5Encoder.encodePassword(password, null);
         if (!encodePassword.equals(user.getPassword())) {
             throw new BadCredentialsException("Wrong password.");
-        }
+        }*/
+        if(!md5Encoder.isPasswordValid(user.getPassword(),password,null))
+            throw new BadCredentialsException("Wrong password.");
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
         return new UsernamePasswordAuthenticationToken(user, password, authorities);
     }

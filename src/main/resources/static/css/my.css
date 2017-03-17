@@ -7,9 +7,7 @@ body {
 	-webkit-font-smoothing:antialiased;
 	-moz-font-feature-settings:"liga","kern"
 }
-table{
-	font-size: normal;
-}
+
 .p-nowrap{
 	overflow: hidden; 
     white-space: nowrap; 
@@ -324,3 +322,68 @@ table{
   margin-bottom: 10px;
 }
 
+footer.normal-footer{
+	background-color: rgba(255,255,255,.95);
+	border-top: 1px solid rgba(153, 153, 153, .2);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 32px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 32px;
+	color: #999;
+}
+footer .supportEmail {
+    margin-right: 15px;
+    color: #999;
+    text-decoration: underline;
+}
+footer a, footer a:hover {
+    -moz-transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+footer .supportEmail {
+    margin-right: 15px;
+    color: #999;
+    text-decoration: underline;
+}
+footer .footLink {
+    display: inline-block;
+    position: relative;
+    margin: 7px 0;
+    border-left: 1px solid #ddd;
+    padding:0 15px;
+    line-height: 18px;
+}
+footer .footLink a {
+    color:#999;
+    text-decoration: none;
+}
+footer .footLink a:hover, footer .supportEmail:hover {
+    color:#678;
+    text-decoration: none;
+}
+footer .footLink .footSublink {
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    width: 160px;
+    padding: 10px 0;
+    margin-left: -80px;
+    color:#678;
+    background-color: #fff;
+    -moz-box-shadow: 0 10px 25px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.4);
+    -webkit-box-shadow: 0 10px 25px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.4);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+footer .footLink .footSublink li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

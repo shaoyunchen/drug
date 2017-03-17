@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by shaoyun_book on 2017/3/15.
  */
-public class SecurityUser implements UserDetails {
+public class DrugUserDetails implements UserDetails {
 
     String fullName ;
 
@@ -25,9 +25,7 @@ public class SecurityUser implements UserDetails {
         return this.user;
     }
 
-    public SecurityUser(User user) {
-        /*if(user==null)
-            throw new NullPointerException("user is null");*/
+    public DrugUserDetails(User user) {
         this.user = user;
         this.fullName = user.getLastName()+user.getFirstName();
     }
@@ -91,4 +89,5 @@ public class SecurityUser implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" th:href="@{/css/dist/css/bootstrap.min.css}" type="text/css"/>
     <script th:src="@{/js/jquery-3.1.0.min.js}" type="text/javascript"/>
@@ -20,6 +19,9 @@
         </div>
         <div th:if="${param.logout}">
             您已注销成功
+        </div>
+        <div th:if="${param.expired}">
+            超时重新登录
         </div>
         <form id='loginForm' th:action="@{/login}" method="POST">
             <p>

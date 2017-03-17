@@ -26,7 +26,7 @@ public class DrugUserDetailsService implements UserDetailsService{
             throw new UsernameNotFoundException("用户名为空");
         }
         User user = userService.getUserWithUserId(userName);
-        SecurityUser sUser = new SecurityUser(user);
+        DrugUserDetails sUser = new DrugUserDetails(user);
         sUser.setRoles(roleService.getRolesWithUserId(user.getEmpNo()));
         return sUser;
     }
