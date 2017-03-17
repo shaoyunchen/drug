@@ -26,7 +26,6 @@ public class ErrorPageConfig {
             ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500.html");
             container.addErrorPages(error401Page, error404Page, error500Page);
         }
-
     }
 
 }
