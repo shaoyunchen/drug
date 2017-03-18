@@ -10,11 +10,11 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,13 +26,7 @@ import java.util.List;
 @RequestMapping("/")
 public class MainController {
 
-//    @RequestMapping("/")
-//    @PreAuthorize("hasRole('ROLE_USER')")
-//    public @ResponseBody String index(){
-//        return "this is springboot test";
-//    }
-
-    @RequestMapping("/")
+    @RequestMapping(value = {"/","/index"})
     public String home(Model model) {
         //获取认证信息
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -94,9 +88,10 @@ public class MainController {
     }
 
     @RequestMapping("/hello")
-    @ResponseBody
-    public String hello(ModelAndView model) {
+    public String hello(ModelAndView model, HttpSession session) {
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         DrugUserDetails userDetails = (DrugUserDetails) principal;
         String username = userDetails.getUsername();
         System.err.println(username);

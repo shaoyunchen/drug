@@ -26,14 +26,14 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" style="margin-right:20%;">
-                <a class="navbar-brand" href="/mainframe" style="color:#fff;">测试&系统</a>
+                <a class="navbar-brand" href="/mainframe" style="color:#fff;">测试系统</a>
             </div>
             <!-- 退出 -->
-            <a class="navbar-brand" href="#" style="color:#fff;float:right;" onclick="javascript:safeLogoutFun();">退出</a>
+            <a class="navbar-brand" href="/logout" style="color:#fff;float:right;" >退出</a>
 
             <!-- 欢迎语 -->
             <div class="navbar-brand" style="margin-right:30px;font-size:15px;float:right;color:#f5d313;">
-                欢迎您,<span th:text="${session.LoginUser.user_name}">亲爱的用户</span>  现在是
+                欢迎您, <!--<span th:text="${}"></span>--> 现在是
                 <span id="time"></span>
                 <script th:inline="javascript">
                     /*<![CDATA[*/
