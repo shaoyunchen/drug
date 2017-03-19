@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cec.dao.UserRoleMapMapper" >
+  <resultMap id="BaseResultMap" type="com.cec.entity.UserRoleMap" >
+    <result column="EMP_NO" property="empNo" jdbcType="VARCHAR" />
+    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="STATUS_CD" property="statusCd" jdbcType="BIGINT" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="UPDATED_DATE" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="DISABLED_BY" property="disabledBy" jdbcType="VARCHAR" />
+    <result column="DISABLED_DATE" property="disabledDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cec.entity.UserRoleMap" >
+    insert into fy_fw_user_roles (EMP_NO, ROLE_ID, STATUS_CD, 
+      CREATED_BY, CREATED_DATE, UPDATED_BY, 
+      UPDATED_DATE, DISABLED_BY, DISABLED_DATE
+      )
+    values (#{empNo,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{statusCd,jdbcType=BIGINT}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{updatedDate,jdbcType=TIMESTAMP}, #{disabledBy,jdbcType=VARCHAR}, #{disabledDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cec.entity.UserRoleMap" >
+    insert into fy_fw_user_roles
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empNo != null" >
+        EMP_NO,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="statusCd != null" >
+        STATUS_CD,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY,
+      </if>
+      <if test="updatedDate != null" >
+        UPDATED_DATE,
+      </if>
+      <if test="disabledBy != null" >
+        DISABLED_BY,
+      </if>
+      <if test="disabledDate != null" >
+        DISABLED_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empNo != null" >
+        #{empNo,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCd != null" >
+        #{statusCd,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledBy != null" >
+        #{disabledBy,jdbcType=VARCHAR},
+      </if>
+      <if test="disabledDate != null" >
+        #{disabledDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+    <select id="selectByRoleId" resultMap="BaseResultMap">
+      select
+      EMP_NO,ROLE_ID,STATUS_CD,CREATED_BY ,CREATED_DATE,UPDATED_BY,UPDATED_DATE,DISABLED_BY,DISABLED_DATE
+      from fy_fw_user_roles where role_id = #{roleId}
+    </select>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select * from fy_fw_user_roles where EMP_NO = #{userId}
+  </select>
+</mapper>

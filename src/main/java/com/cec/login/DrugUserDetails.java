@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class DrugUserDetails implements UserDetails {
 
-    String fullName ;
+    public String fullName ;
 
     List<Role> roles;
 
-    User user;
+    public User user;
 
     public User getUser(){
         return this.user;
