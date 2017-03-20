@@ -1,8 +1,8 @@
 package com.cec.config;
 
 import com.cec.login.DrugAuthenticationProvider;
-import com.cec.login.LoginSuccessHandler;
 import com.cec.login.DrugUserDetailsService;
+import com.cec.login.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 /**
  * Created by shaoyun_book on 2017/3/14.
@@ -36,9 +37,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new Md5PasswordEncoder();
     }
 
+    @Bean
+    public SpringSecurityDialect securityDialect() {
+        return new SpringSecurityDialect();
+    }
+
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/**/favicon.ico","/error/**");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/**/favicon.ico","/error/**","**.css","**.js");
     }
 
     @Override

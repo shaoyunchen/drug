@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="public/base">
 <head>
@@ -8,11 +8,23 @@
 </head>
 <body>
 <div layout:fragment="content">
-    hello word
-    <p th:text="${'============'}">123</p>
-    asdfasdfa;
-    <p>[[${#httpServletRequest.remoteUser}]]</p>
     <p th:text="${#authentication.name}"></p>
+    <p th:text="${#authentication.getPrincipal().fullName}"></p>
+    <p th:text="${#authentication.getPrincipal().user}"></p>
+    <p th:text="${#authentication.getPrincipal().user.empNo}"></p>
+    <p th:each="role:${#authentication.getPrincipal().roles}">
+        <p th:text="${role.name}"></p>
+    </p>
+    <select class = "select-normal">
+        <span th:each="role:${#authentication.authorities}" >
+            <option th:text="${role.authority}"></option>
+        </span>
+    </select>
+    <div sec:authorize="hasRole('ROLE_1')">
+        This will only be displayed if authenticated user has role ROLE_ADMIN.
+    </div>
+
+
 </div>
 </body>
 </html>

@@ -15,19 +15,19 @@ import java.util.List;
  */
 public class DrugUserDetails implements UserDetails {
 
-    public String fullName ;
+    public String fullName;
 
     List<Role> roles;
 
     public User user;
 
-    public User getUser(){
+    public User getUser() {
         return this.user;
     }
 
     public DrugUserDetails(User user) {
         this.user = user;
-        this.fullName = user.getLastName()+user.getFirstName();
+        this.fullName = user.getLastName() + user.getFirstName();
     }
 
     public List<Role> getRoles() {
@@ -47,12 +47,12 @@ public class DrugUserDetails implements UserDetails {
         return getMyAuthorityies();
     }
 
-    private List<GrantedAuthority> getMyAuthorityies(){
-        List<GrantedAuthority> grantedAuthorities=new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        for (Role role:roles) {
+    private List<GrantedAuthority> getMyAuthorityies() {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        for (Role role : roles) {
             grantedAuthorities.add(role);
         }
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         return grantedAuthorities;
     }
 
@@ -66,7 +66,7 @@ public class DrugUserDetails implements UserDetails {
         return this.user.getUserId();
     }
 
-    public String getUserNo(){
+    public String getUserNo() {
         return this.user.getEmpNo();
     }
 

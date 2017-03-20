@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../../static/css/my.css"
           th:href="@{/css/my.css}" />
     <link th:href="@{/images/icon.ico}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../../static/images/login/favicon.ico" type="image/x-icon" />
+
     <style type="text/css">
         body{
             font-family:微软雅黑;
@@ -33,7 +35,7 @@
 
             <!-- 欢迎语 -->
             <div class="navbar-brand" style="margin-right:30px;font-size:15px;float:right;color:#f5d313;">
-                欢迎您, <!--<span th:text="${}"></span>--> 现在是
+                欢迎您, <span th:text="${#authentication.getPrincipal().fullName}"></span> 现在是
                 <span id="time"></span>
                 <script th:inline="javascript">
                     /*<![CDATA[*/
@@ -97,6 +99,7 @@
 </footer>
 <script src="../../static/js/jquery-3.1.0.min.js" th:src="@{/js/jquery-3.1.0.min.js}" type="text/javascript"/>
 <script src="../../static/css/dist/js/bootstrap.min.js" th:src="@{/css/dist/js/bootstrap.min.js}" type="text/javascript"/>
+<script src="../../static/js/jsUtil.js" th:src="@{/js/jsUtil.js}" type="text/javascript"/>
 </body>
 
 </html>

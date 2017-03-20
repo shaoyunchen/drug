@@ -1,0 +1,182 @@
+a,button {
+	outline: 0
+}
+.promvip a.vip,a {
+	text-decoration: none
+}
+* {
+	margin: 0;
+	padding: 0
+}
+@font-face {
+	font-family: iconfont;
+	src: url(//at.alicdn.com/t/font_1450338500_3436449.eot);
+	src: url(//at.alicdn.com/t/font_1450338500_3436449.eot?#iefix) format("embedded-opentype"),url(//at.alicdn.com/t/font_1450338500_3436449.woff) format("woff"),url(//at.alicdn.com/t/font_1450338500_3436449.ttf) format("truetype"),url(//at.alicdn.com/t/font_1450338500_3436449.svg#iconfont) format("svg")
+}
+.iconfont {
+	font-family: iconfont !important;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: .2px;
+	-moz-osx-font-smoothing: grayscale
+}
+body {
+	text-align: center;
+	-webkit-text-size-adjust: none;
+	font: 14px / 1 "Microsoft Yahei",Helvetica,sans-serif,Arial
+}
+body > div {
+	min-width: 1000px;
+}
+.wrap {
+	width: 1170px;
+	overflow: visible;
+	margin: 0 auto;
+	text-align: left;
+}
+.center,.promvip span.vip {
+	text-align: center
+}
+ol,ul {
+	list-style: none
+}
+a {
+	color: #333
+}
+img {
+	border: 0
+}
+.clearfix {
+	clear: both
+}
+.skin-dark {
+	background: #f9f9f9;
+	color: #999
+}
+.skin-light {
+	background: #fff;
+	color: #333
+}
+::-webkit-input-placeholder {
+	color: #888
+}
+::-moz-placeholder {
+	color: #888
+}
+:-ms-input-placeholder {
+	color: #888
+}
+input:-moz-placeholder {
+	color: #888
+}
+.phcolor {
+	color: #ccc
+}
+input::-ms-clear {
+	display: none
+}
+.promvip {
+	background: url(../assets/img/common/bg-prom.png) center center no-repeat #dc353b;
+	color: #fff
+}
+.promvip a {
+	font-size: 28px
+}
+.promvip a span {
+	font-size: 18px
+}
+.promvip span.vip {
+	margin-right: 27px;
+	font-size: 28px;
+	color: #fff
+}
+.promvip a.vip {
+	padding: 9px 26px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-transition: background 150ms linear;
+	-o-transition: background 150ms linear;
+	-ms-transition: background 150ms linear;
+	-webkit-transition: background 150ms linear;
+	transition: background 150ms linear;
+	color: #333;
+	font-size: 18px;
+	background: #fbeded
+}
+.promvip a.vip:hover {
+	background: #fff
+}
+.promvip .center {
+	padding: 19px 0
+}
+@keyframes opacityChange {0% {
+	opacity: 0
+}
+100% {
+	opacity: 1
+}
+
+}
+@-webkit-keyframes opacityChange {0% {
+opacity: 0
+}
+100% {
+opacity: 1
+}
+
+}
+@-moz-keyframes opacityChange {0% {
+opacity: 0
+}
+100% {
+opacity: 1
+}
+
+}
+@-o-keyframes opacityChange {0% {
+opacity: 0
+}
+100% {
+opacity: 1
+}
+
+}
+@-ms-keyframes opacityChange {0% {
+opacity: 0
+}
+100% {
+opacity: 1
+}
+
+}
+.btn-more {
+display: inline-block;
+color: #15a;
+border: 1px solid #15a;
+-moz-border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-transition: background 150ms linear;
+-o-transition: background 150ms linear;
+-ms-transition: background 150ms linear;
+-webkit-transition: background 150ms linear;
+transition: background 150ms linear;
+padding: 10px 25px
+}
+.btn-more:hover {
+background: #15a;
+color: #fff
+}
+.col-3 {
+float: left;
+width: 33.3%
+}
+.col-5 {
+float: left;
+width: 20%
+}
