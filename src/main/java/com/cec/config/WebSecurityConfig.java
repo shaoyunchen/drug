@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/**/favicon.ico","/error/**","**.css","**.js");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/**.ico","/error/**","/hAdmin/**","/**.css","/**.js","/**.html");
     }
 
     @Override

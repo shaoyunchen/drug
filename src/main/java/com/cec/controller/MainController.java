@@ -89,12 +89,7 @@ public class MainController {
 
     @RequestMapping("/hello")
     public String hello(ModelAndView model, HttpSession session) {
-        Authentication o = SecurityContextHolder.getContext().getAuthentication();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Collection<? extends GrantedAuthority> ls =o.getAuthorities();
-        for (GrantedAuthority l:ls) {
-            System.out.println(l.getAuthority());
-        }
         DrugUserDetails userDetails = (DrugUserDetails) principal;
         String username = userDetails.getUsername();
         System.err.println(username);
